@@ -1,4 +1,3 @@
 class Doctor < ApplicationRecord
-    has_many :reservations
-  end
-  
+  has_many :reservations
+end
