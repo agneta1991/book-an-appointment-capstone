@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  specialization: MyString
+  years_of_experience: 1
+  price_per_appointment: 9.99
+
+two:
+  name: MyString
+  specialization: MyString
+  years_of_experience: 1
+  price_per_appointment: 9.99
