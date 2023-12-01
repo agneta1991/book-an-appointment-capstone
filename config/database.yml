@@ -1,3 +1,9 @@
+# Arnold-----------------------------
+
+
+
+
+
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
@@ -21,13 +27,17 @@ default: &default
 
 development:
   <<: *default
-  database: doctors_appointment_backend_development
+  database: capstone_back_end_development
+  username: capstone
+  password: 12345
+  host: localhost
+  port: 5432
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: doctors_appointment_backend
+  #username: budget_app
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -55,7 +65,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: doctors_appointment_backend_test
+  database: capstone_back_end_test
+  username: capstone
+  password: 12345
+  host: localhost
+  port: 5432
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,6 +94,4 @@ test:
 #
 production:
   <<: *default
-  database: doctors_appointment_backend_production
-  username: doctors_appointment_backend
-  password: <%= ENV["DOCTORS_APPOINTMENT_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
