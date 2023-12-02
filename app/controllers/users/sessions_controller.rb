@@ -14,8 +14,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     user = User.find_by(name: params[:user][:name])
-  
-    if user && user.valid_password?(params[:user][:password])
+
+    if user&.valid_password?(params[:user][:password])
       sign_in(user)
       render json: {
         status: 200,
@@ -29,10 +29,10 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-  
+
   def destroy
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-  
+
     if signed_out
       render json: {
         status: 200,
@@ -45,8 +45,6 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-  
-  
 
   private
 
@@ -74,14 +72,12 @@ class Users::SessionsController < Devise::SessionsController
   def verify_signed_out_user
     # If the action is destroy, allow it to proceed without checking if the user is signed in
     return if action_name == 'destroy'
-  
-    if user_signed_in?
-      render json: {
-        status: 401,
-        message: 'You are already signed in.'
-      }, status: :unauthorized
-    end
+
+    return unless user_signed_in?
+
+    render json: {
+      status: 401,
+      message: 'You are already signed in.'
+    }, status: :unauthorized
   end
-  
-  
 end
