@@ -49,7 +49,7 @@ module Api
       end
 
       def doctor_params
-        params.require(:doctor).permit(:name, :specialization, :years_of_experience, :price_per_appointment)
+        params.require(:doctor).permit(:user_id,:name, :specialization, :years_of_experience, :price_per_appointment)
       end
     end
   end
