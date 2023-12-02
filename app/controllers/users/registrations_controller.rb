@@ -1,8 +1,10 @@
-# frozen_string_literal: true
+# app/controllers/users/registrations_controller.rb
 
 class Users::RegistrationsController < Devise::RegistrationsController
   include RackSessionFix
   respond_to :json
+
+  before_action :configure_permitted_parameters
 
   def new
     render json: {
@@ -27,6 +29,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
   def respond_with(resource, _opts = {})
     if request.method == 'POST' && resource.persisted?
       render json: {
@@ -44,5 +50,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         errors: resource.errors.full_messages
       }, status: :unprocessable_entity
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
