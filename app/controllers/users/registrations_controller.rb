@@ -1,6 +1,7 @@
 # app/controllers/users/registrations_controller.rb
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :verify_signed_out_user, only: :destroy, unless: -> { request.format.json? }
   include RackSessionFix
   respond_to :json
 
