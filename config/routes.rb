@@ -9,11 +9,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-
-devise_scope :user do
-  delete '/logout', to: 'users/sessions#destroy', as: :destroy_user_session
-end
-  
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users
