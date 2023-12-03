@@ -1,6 +1,7 @@
 module Api
   module V1
     class DoctorsController < ApplicationController
+      before_action :authenticate_user!
       before_action :set_doctor, only: %i[show update destroy]
 
       def index
@@ -43,6 +44,20 @@ module Api
       end
 
       private
+
+      def authenticate_user!
+        token = request.headers['Authorization']&.split&.last
+        user = User.find_by(token: token)
+    
+        if user
+          sign_in(user, store: false)
+        else
+          render json: {
+            status: 401,
+            message: 'Unauthorized. Please log in.'
+          }, status: :unauthorized
+        end
+      end
 
       def set_doctor
         @doctor = Doctor.find(params[:id])

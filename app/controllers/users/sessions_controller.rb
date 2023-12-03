@@ -17,6 +17,7 @@ class Users::SessionsController < Devise::SessionsController
       render json: {
         status: 200,
         message: 'Logged in successfully.',
+        token: user.token, # Include the token in the response
         data: UserSerializer.new(user).serializable_hash[:data][:attributes]
       }, status: :ok
     else
@@ -44,6 +45,14 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
+
+  def respond_with(resource, _opts = {})
+    render json: {
+      status: { code: 200, message: 'Logged in successfully.' },
+      token: resource.token, # Include the token in the response
+      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+    }, status: :ok
+  end
 
   def respond_with(resource, _opts = {})
     render json: {
