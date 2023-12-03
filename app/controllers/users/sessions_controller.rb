@@ -1,7 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!, only: [:destroy]
   before_action :configure_sign_in_params, only: [:create]
-  before_action :verify_signed_out_user, only: :destroy
 
   include RackSessionFix
   respond_to :json
@@ -54,28 +53,28 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    if current_user
-      render json: {
-        status: 200,
-        message: 'logged out successfully'
-      }, status: :ok
+    authorization_header = request.headers['Authorization']
+  
+    if authorization_header.present?
+      jwt_payload = JWT.decode(authorization_header.split[1],
+        Rails.application.credentials.fetch(:secret_key_base)).first
+  
+      current_user = User.find(jwt_payload['sub'])
+  
+      if current_user
+        render json: {
+          status: { code: 200, message: 'Logged out successfully.' }
+        }, status: :ok
+      else
+        render json: {
+          status: { code: 401, message: "Couldn't find an active session." }
+        }, status: :unauthorized
+      end
     else
       render json: {
-        status: 401,
-        message: "Couldn't find an active session."
+        status: { code: 401, message: 'Authorization header is missing.' }
       }, status: :unauthorized
     end
   end
-
-  def verify_signed_out_user
-    # If the action is destroy, allow it to proceed without checking if the user is signed in
-    return if action_name == 'destroy'
-
-    return unless user_signed_in?
-
-    render json: {
-      status: 401,
-      message: 'You are already signed in.'
-    }, status: :unauthorized
-  end
+  
 end
