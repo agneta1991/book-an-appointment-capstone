@@ -33,3 +33,5 @@ node_modules/
 
 .ruby-version
 config/database.yml
+
+config/credentials.yml.enc
