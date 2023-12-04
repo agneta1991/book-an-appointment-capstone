@@ -18,6 +18,10 @@ module DoctorsAppointmentBackend
 
     config.middleware.use ActionDispatch::Session::CookieStore
 
+    config.to_prepare do
+      Devise::SessionsController.before_action :configure_sign_in_params
+    end    
+
 
     # Configuration for the application, engines, and railties goes here.
     #
