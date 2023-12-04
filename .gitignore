@@ -31,8 +31,5 @@ node_modules/
 !/tmp/storage/
 !/tmp/storage/.keep
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
 .ruby-version
 config/database.yml
