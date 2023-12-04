@@ -1,8 +1,11 @@
 class Api::V1::ReservationsController < ApplicationController
+  # before_action :authenticate_user!
   before_action :set_reservation, only: %i[show update destroy]
 
     def index
       current_user_id = params[:user_id]
+      user = User.find(current_user_id)
+      @reservation = user.reservations
       render json: { reservations: @reservation }
     end
   
