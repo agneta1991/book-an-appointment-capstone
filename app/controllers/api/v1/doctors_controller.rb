@@ -47,8 +47,8 @@ module Api
 
       def authenticate_user!
         token = request.headers['Authorization']&.split&.last
-        user = User.find_by(token: token)
-    
+        user = User.find_by(token:)
+
         if user
           sign_in(user, store: false)
         else
