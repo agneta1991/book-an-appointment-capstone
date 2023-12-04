@@ -31,9 +31,7 @@ node_modules/
 !/tmp/storage/
 !/tmp/storage/.keep
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+.ruby-version
+config/database.yml
 
-# .ruby-version
-/config/database.yml
-/db/seeds.rb
+config/credentials.yml.enc
