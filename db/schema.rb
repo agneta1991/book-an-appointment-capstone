@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_085551) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_03_210301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_085551) do
     t.decimal "price_per_appointment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_085551) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "doctors", "users"
   add_foreign_key "reservations", "doctors"
   add_foreign_key "reservations", "users"
 end
