@@ -32,7 +32,7 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
 
   describe 'GET #index' do
     it 'returns a list of reservations for a user' do
-      reservation = Reservation.create(user_id: user.id, doctor_id: doctor.id, date: '2023-12-15')
+      Reservation.create(user_id: user.id, doctor_id: doctor.id, date: '2023-12-15')
       get :index, params: { user_id: user.id }
       expect(response).to have_http_status(:success)
       expect(JSON.parse(response.body)['reservations'].length).to eq(1)

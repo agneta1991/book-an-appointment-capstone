@@ -83,7 +83,7 @@ RSpec.describe Api::V1::DoctorsController, type: :controller do
       sign_in user
       post :create, params: invalid_attributes
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body)).to include("name" => ["can't be blank"])
+      expect(JSON.parse(response.body)).to include('name' => ["can't be blank"])
     end
   end
 
@@ -108,7 +108,7 @@ RSpec.describe Api::V1::DoctorsController, type: :controller do
       sign_in user
       put :update, params: { id: doctor.id }.merge(doctor: { name: '' })
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body)).to include("name" => ["can't be blank"])
+      expect(JSON.parse(response.body)).to include('name' => ["can't be blank"])
     end
   end
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Reservation, type: :model do
   let(:user) { User.create(name: 'John Doe', email: 'john@example.com', password: 'password123') }
   let(:doctor) do
-    Doctor.create(name: 'Dr. Smith', specialization: 'Cardiology', years_of_experience: 15, price_per_appointment: 200.0,
+    Doctor.create(name: 'Dr. Smith', specialization: 'Cardiology', years_of_experience: 15, price_per_appointment: 200,
                   user_id: user.id)
   end
 
