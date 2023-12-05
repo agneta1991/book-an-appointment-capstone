@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :doctors
-      resources :reservations
+      resources :reservations, only: [:index, :show, :create, :update, :destroy]
     end
   end
 end

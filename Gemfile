@@ -5,6 +5,8 @@ ruby '3.0.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
+gem 'rubocop', '>= 1.0', '< 2.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -22,6 +24,7 @@ gem 'jsonapi-serializer'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
+gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -37,12 +40,13 @@ gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
+gem 'rack-cors'
 gem 'rack-cors'
 
 group :development, :test do

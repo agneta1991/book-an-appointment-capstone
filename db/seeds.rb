@@ -1,4 +1,3 @@
-# Assuming admin1 is already created as an admin user
 admin1 = User.create!(
   email: 'admin1@example.com',
   password: 'adminpassword1',
