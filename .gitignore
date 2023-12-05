@@ -35,3 +35,5 @@ node_modules/
 config/database.yml
 
 config/credentials.yml.enc
+
+/config/master.key
