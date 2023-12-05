@@ -66,7 +66,7 @@ Get details of a specific user.
 ## Create Users
 
 **Endpoint:**
-`GET /api/v1/users/:id`
+`POST /api/v1/users/:id`
 
 **Description:**
 Create a user.
@@ -93,7 +93,7 @@ Not sure
 ## Update Users
 
 **Endpoint:**
-`GET /api/v1/users/:id`
+`PUT /api/v1/users/:id`
 
 **Description:**
 Update existing user.
@@ -123,7 +123,7 @@ Update existing user.
 ## Delete Users
 
 **Endpoint:**
-`GET /api/v1/users/:id`
+`DELETE /api/v1/users/:id`
 
 **Description:**
 Delete existing user.
