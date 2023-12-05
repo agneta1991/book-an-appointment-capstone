@@ -21,17 +21,17 @@ default: &default
 
 development:
   <<: *default
-  database: book_an_appointment_development
+  database: doctors_appointment_backend_development
  
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
-  # the same name as the operating system user running Rails.
-  username: postgres
+  # # the same name as the operating system user running Rails.
+  # username: postgres
 
-  # The password associated with the PostgreSQL role (username).
-  password: cherry
+  # # The password associated with the PostgreSQL role (username).
+  # password: cherry
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -56,9 +56,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: book_an_appointment_test
-  username: postgres
-  password: cherry
+  database: doctors_appointment_backend_test
+  # username: postgres
+  # password: cherry
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
