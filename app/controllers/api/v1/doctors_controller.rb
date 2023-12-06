@@ -1,7 +1,7 @@
 module Api
   module V1
     class DoctorsController < ApplicationController
-      before_action :authenticate_user!
+      # before_action :authenticate_user!
       before_action :set_doctor, only: %i[show update destroy]
 
       def index
