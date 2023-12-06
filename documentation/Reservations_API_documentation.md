@@ -75,13 +75,15 @@ Get details of a specific reservation.
 ## Create Reservation
 
 **Endpoint:**
-`GET /api/v1/reservations/:id`
+`POST /api/v1/reservations/:id`
 
 **Description:**
 Create a reservation.
 
 **Parameters:**
-# NOT SURE  
+  - `id` (User ID)
+  - `id` (Doctor ID)
+  
 
 **Response:**
 #### Status Code
@@ -104,15 +106,16 @@ Create a reservation.
 ## Update Reservation
 
 **Endpoint:**
-`GET /api/v1/reservations/:id`
+`PUT /api/v1/reservations/:id`
 
 **Description:**
 Update existing reservation.
 
 **Parameters:**
-- Details how you would like to update the doctor
+- Details how you would like to update the reservation
 - Reservation id
-- JSON object containing updated user details.
+- `id` (User ID)
+
 
 **Response:**
 #### Status Code
@@ -136,13 +139,14 @@ Update existing reservation.
 ## Delete Doctor
 
 **Endpoint:**
-`GET /api/v1/reservations/:id`
+`DELETE /api/v1/reservations/:id`
 
 **Description:**
 Delete existing reservation.
 
 **Parameters:**
 - Reservation id
+- `id` (User ID)
 
 **Response:**
 #### Status Code

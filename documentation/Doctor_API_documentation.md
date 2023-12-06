@@ -73,13 +73,13 @@ Get details of a specific doctor.
 ## Create Doctor
 
 **Endpoint:**
-`GET /api/v1/doctors/:id`
+`POST /api/v1/doctors/:id`
 
 **Description:**
 Create a doctor.
 
 **Parameters:**
-# NOT SURE  
+  - `id` (User ID)
 
 **Response:**
 #### Status Code
@@ -102,7 +102,7 @@ Create a doctor.
 ## Update Users
 
 **Endpoint:**
-`GET /api/v1/doctors/:id`
+`PUT /api/v1/doctors/:id`
 
 **Description:**
 Update existing doctor.
@@ -110,7 +110,7 @@ Update existing doctor.
 **Parameters:**
 - Details how you would like to update the doctor
 - Doctor id
-- JSON object containing updated user details.
+- `id` (User ID)
 
 **Response:**
 #### Status Code
@@ -134,13 +134,14 @@ Update existing doctor.
 ## Delete Doctor
 
 **Endpoint:**
-`GET /api/v1/doctors/:id`
+`DELETE /api/v1/doctors/:id`
 
 **Description:**
 Delete existing user.
 
 **Parameters:**
 - Doctor id
+- User id (the user that is admin)
 
 **Response:**
 #### Status Code
