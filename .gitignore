@@ -31,7 +31,6 @@ node_modules/
 !/tmp/storage/
 !/tmp/storage/.keep
 
-.ruby-version
 config/database.yml
 
 config/credentials.yml.enc
