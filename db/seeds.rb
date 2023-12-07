@@ -39,7 +39,7 @@ user2 = User.create!(
 )
 
 user3 = User.create!(
-  email: 'user3@example6.com',
+  email: 'user3@example3.com',
   password: 'password3',
   password_confirmation: 'password3',
   name: 'Arnold',
@@ -95,6 +95,47 @@ doctor5 = Doctor.create!(
   user_id: admin1.id,
   img: 'https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   )
+
+doctor6 = Doctor.create!(
+  id: 6,
+  name: 'Emily Anderson',
+  specialization: 'Neurology',
+  years_of_experience: 8,
+  price_per_appointment: 280,
+  user_id: admin1.id,
+  img: 'https://images.pexels.com/photos/7904483/pexels-photo-7904483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+)
+
+doctor7 = Doctor.create!(
+  id: 7,
+  name: 'Daniel Ramirez',
+  specialization: 'Cardiology',
+  years_of_experience: 10,
+  price_per_appointment: 320,
+  user_id: admin1.id,
+  img: 'https://images.pexels.com/photos/7966284/pexels-photo-7966284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+)
+
+doctor8 = Doctor.create!(
+  id: 8,
+  name: 'Sophia Patel',
+  specialization: 'Ophthalmology',
+  years_of_experience: 6,
+  price_per_appointment: 230,
+  user_id: admin1.id,
+  img: 'https://images.pexels.com/photos/14438787/pexels-photo-14438787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+)
+
+doctor9 = Doctor.create!(
+  id: 9,
+  name: 'Anthony Martinez',
+  specialization: 'ENT (Ear, Nose, Throat)',
+  years_of_experience: 11,
+  price_per_appointment: 270,
+  user_id: admin1.id,
+  img: 'https://images.pexels.com/photos/4989133/pexels-photo-4989133.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
+)
+
 
 reservation1 = Reservation.create!(
   id: 1,
