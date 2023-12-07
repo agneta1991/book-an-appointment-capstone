@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.2'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
@@ -22,6 +22,8 @@ gem 'jsonapi-serializer'
 # Gem for authentication
 # gem 'devise_token_auth'
 
+gem 'sprockets-rails'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
@@ -35,7 +37,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -48,7 +50,7 @@ gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do

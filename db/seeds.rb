@@ -53,7 +53,7 @@ doctor1 = Doctor.create!(
   years_of_experience: 7,
   price_per_appointment: 250,
   user_id: admin1.id,
-  img: ''
+  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
 doctor2 = Doctor.create!(
@@ -63,7 +63,7 @@ doctor2 = Doctor.create!(
   years_of_experience: 12,
   price_per_appointment: 200,
   user_id: admin1.id,
-  img: ''
+  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
 doctor3 = Doctor.create!(
@@ -73,7 +73,7 @@ doctor3 = Doctor.create!(
   years_of_experience: 14,
   price_per_appointment: 180,
   user_id: admin1.id,
-  img: ''
+  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
 doctor4 = Doctor.create!(
@@ -83,7 +83,7 @@ doctor4 = Doctor.create!(
   years_of_experience: 4,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: ''
+  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
 doctor5 = Doctor.create!(
@@ -93,7 +93,7 @@ doctor5 = Doctor.create!(
   years_of_experience: 9,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: ''
+  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
 reservation1 = Reservation.create!(
