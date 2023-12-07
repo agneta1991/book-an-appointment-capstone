@@ -79,13 +79,13 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_to_on_destroy
     authorization_header = request.headers['Authorization']
-
+  
     if authorization_header.present?
       jwt_payload = JWT.decode(authorization_header.split[1],
-                               Rails.application.credentials.fetch(:secret_key_base)).first
-
+        Rails.application.credentials.fetch(:secret_key_base)).first
+  
       current_user = User.find(jwt_payload['sub'])
-
+  
       if current_user
         render json: {
           status: { code: 200, message: 'Logged out successfully.' }
@@ -101,4 +101,5 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
+  
 end
