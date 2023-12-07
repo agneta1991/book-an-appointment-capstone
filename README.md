@@ -116,8 +116,7 @@ To get a local copy up and running, follow these steps:
 👤 **Bhekisile Jozi**
 
 - GitHub: [@githubhandle](https://github.com/Bhekisile)
-- Twitter: [@twitterhandle](@Zenaye4)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/bhekisile-jozi-b9823369)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/bhekisile-j-b9823369)
 
 👤 **IKONDE NEKEMIAH ARNOLD**
 
