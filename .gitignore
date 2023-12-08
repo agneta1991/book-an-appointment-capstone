@@ -34,7 +34,5 @@ node_modules/
 /public/assets
 
 config/database.yml
-
 config/credentials.yml.enc
-
 /config/master.key

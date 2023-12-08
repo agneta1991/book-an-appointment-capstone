@@ -9,18 +9,51 @@ class Users::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
 
+  # def create
+  #   user = User.find_by(name: params[:user][:name])
+
+  #   if user&.valid_password?(params[:user][:password])
+  #     sign_in(user)
+  #     render json: {
+  #       status: 200,
+  #       message: 'Logged in successfully.',
+  #       token: user.token, # Include the token in the response
+  #       data: UserSerializer.new(user).serializable_hash[:data][:attributes]
+  #     }, status: :ok
+  #   else
+  #     render json: {
+  #       status: 401,
+  #       message: 'Invalid credentials.'
+  #     }, status: :unauthorized
+  #   end
+  # end
   def create
+    # Check if the user parameter is present and has a name key
+    unless params.dig(:user, :name)
+      return render json: { status: 400, message: 'Bad Request: Missing user name' }, status: :bad_request
+    end
+
+    # Find the user by name
     user = User.find_by(name: params[:user][:name])
 
+    # Check if user exists and the password is valid
     if user&.valid_password?(params[:user][:password])
-      sign_in(user)
+      # Sign in the user
+      sign_in(:user, user)
+
+
+      # Serialize user data
+      user_data = UserSerializer.new(user).serializable_hash[:data][:attributes]
+
+      # Render the successful login JSON response
       render json: {
         status: 200,
         message: 'Logged in successfully.',
-        token: user.token, # Include the token in the response
-        data: UserSerializer.new(user).serializable_hash[:data][:attributes]
+        token: user.jti,
+        data: user_data
       }, status: :ok
     else
+      # Render the error JSON response
       render json: {
         status: 401,
         message: 'Invalid credentials.'
@@ -85,4 +118,5 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
+
 end
