@@ -190,7 +190,6 @@ doctor9 = Doctor.create!(
 
 
 reservation1 = Reservation.create!(
-  id: 1,
   time: '14:20',
   date: '30/12/2023',
   user: user1,
@@ -199,7 +198,6 @@ reservation1 = Reservation.create!(
 )
 
 reservation2 = Reservation.create!(
-  id: 2,
   time: '15:20',
   date: '30/12/2023',
   user: user2,
@@ -208,7 +206,6 @@ reservation2 = Reservation.create!(
 )
 
 reservation3 = Reservation.create!(
-  id: 3,
   time: '16:20',
   date: '30/12/2023',
   user: user3,
@@ -217,7 +214,6 @@ reservation3 = Reservation.create!(
 )
 
 reservation4 = Reservation.create!(
-  id: 4,
   time: '14:20',
   date: '01/01/2024',
   user: admin1,
@@ -226,7 +222,6 @@ reservation4 = Reservation.create!(
 )
 
 reservation5 = Reservation.create!(
-  id: 5,
   time: '15:20',
   date: '01/01/2024',
   user: admin2,
@@ -235,7 +230,6 @@ reservation5 = Reservation.create!(
 )
 
 reservation6 = Reservation.create!(
-  id: 6,
   time: '16:20',
   date: '01/01/2024',
   user: admin3,
