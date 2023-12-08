@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   include Devise::Controllers::Helpers
 
   before_action :authenticate_user!, only: [:update]
+  before_action :set_user, only: [:update]
 
   # GET /api/v1/users
   def index
