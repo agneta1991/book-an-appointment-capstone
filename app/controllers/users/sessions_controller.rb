@@ -41,7 +41,6 @@ class Users::SessionsController < Devise::SessionsController
       # Sign in the user
       sign_in(:user, user)
 
-
       # Serialize user data
       user_data = UserSerializer.new(user).serializable_hash[:data][:attributes]
 
@@ -118,5 +117,4 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-
 end
