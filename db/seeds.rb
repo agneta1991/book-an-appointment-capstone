@@ -53,8 +53,8 @@ doctor1 = Doctor.create!(
   years_of_experience: 7,
   price_per_appointment: 250,
   user_id: admin1.id,
-  img: ''
-)
+  img: 'https://images.pexels.com/photos/3714743/pexels-photo-3714743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  )
 
 doctor2 = Doctor.create!(
   id: 2,
@@ -63,18 +63,18 @@ doctor2 = Doctor.create!(
   years_of_experience: 12,
   price_per_appointment: 200,
   user_id: admin1.id,
-  img: ''
-)
+  img: 'https://images.pexels.com/photos/8460094/pexels-photo-8460094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  )
 
 doctor3 = Doctor.create!(
   id: 3,
   name: 'Gabriel Lloyd',
   specialization: 'Pediatrics',
-  years_of_experience: 14,
+  years_of_experience: 5,
   price_per_appointment: 180,
   user_id: admin1.id,
-  img: ''
-)
+  img: 'https://images.pexels.com/photos/6627931/pexels-photo-6627931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  )
 
 doctor4 = Doctor.create!(
   id: 4,
@@ -83,8 +83,8 @@ doctor4 = Doctor.create!(
   years_of_experience: 4,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: ''
-)
+  img: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  )
 
 doctor5 = Doctor.create!(
   id: 5,
@@ -93,8 +93,8 @@ doctor5 = Doctor.create!(
   years_of_experience: 9,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: ''
-)
+  img: 'https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  )
 
 reservation1 = Reservation.create!(
   id: 1,
