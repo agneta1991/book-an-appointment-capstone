@@ -2,11 +2,25 @@ class Api::V1::ReservationsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_reservation, only: %i[show update destroy]
 
+  # my reservation
   def index
     current_user_id = params[:user_id]
     user = User.find(current_user_id)
-    @reservation = user.reservations
-    render json: { reservations: @reservation }
+    @reservations = user.reservations.includes(:doctor)
+    render json: { reservations: @reservations.as_json(include: { doctor: { only: [:id, :name] } }) }
+  end
+  
+  # all reservation for admin
+  def getAll
+    @reservations = Reservation.includes(:user, :doctor).all
+    render json: {
+      reservations: @reservations.as_json(
+        include: {
+          user: { only: [:id, :name, :email] }, # Add more attributes as needed
+          doctor: { only: [:id, :name, :specialization] } # Add more attributes as needed
+        }
+      )
+    }
   end
 
   def show
@@ -35,12 +49,14 @@ class Api::V1::ReservationsController < ApplicationController
 
   def destroy
     @reservation.destroy
-
-    respond_to do |_format|
-      render json: reservation, status: :destroyed
-      render json: reservation.errors, status: :unprocessable_entity
+  
+    if @reservation.destroyed?
+      render json: { message: 'Reservation destroyed successfully' }, status: :ok
+    else
+      render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
     end
   end
+    
 
   private
 
