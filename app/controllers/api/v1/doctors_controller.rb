@@ -5,12 +5,23 @@ module Api
       before_action :set_doctor, only: %i[show update destroy]
 
       def index
-        @doctors = Doctor.all
-        render json: @doctors.as_json(except: %i[created_at updated_at])
+        @doctors = Doctor.order('created_at DESC')
+
+        doctors_data = @doctors.map do |doctor|
+          doctor_data = doctor.as_json
+          doctor_data['image_url'] = doctor.image.attached? ? url_for(doctor.image) : nil
+          doctor_data
+        end
+
+        render json: doctors_data
       end
 
       def show
-        render json: @doctor.as_json(except: %i[created_at updated_at])
+        # render json: @doctor.as_json(except: %i[created_at updated_at])
+        @doctor = doctor.find(params[:id])
+        @doctor_data = @doctor.as_json
+        @doctor_data['image_url'] = @doctor.image.attached? ? url_for(@doctor.image) : nil
+        render json: @doctor_data
       end
 
       # Post
@@ -21,9 +32,13 @@ module Api
 
       def create
         @doctor = Doctor.new(doctor_params)
+        @user_id = params[:doctor][:user_id]
+        # @doctor.user_id = user_id
 
         if @doctor.save
-          render json: @doctor.as_json(except: %i[created_at updated_at]), status: :created
+          doctor_data = @doctor.as_json
+          doctor_data['image_url'] = @doctor.image.attached? ? url_for(@doctor.image) : nil
+          render json: { doctor: doctor_data, message: 'Doctor created successfully' }, status: :created
         else
           render json: @doctor.errors, status: :unprocessable_entity
         end
@@ -64,7 +79,8 @@ module Api
       end
 
       def doctor_params
-        params.require(:doctor).permit(:user_id, :name, :specialization, :years_of_experience, :price_per_appointment)
+        params.require(:doctor).permit(:user_id, :name, :specialization, :years_of_experience, :price_per_appointment,
+                                       :image)
       end
     end
   end
