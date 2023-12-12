@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :doctors
-      resources :reservations, only: [:index, :show, :create, :update, :destroy]
+      resources :reservations, only: [:index, :show, :create, :update, :destroy] do
+        collection do
+          get 'getAll'
+        end
+      end
     end
   end
 end
