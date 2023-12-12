@@ -1,11 +1,8 @@
 class Doctor < ApplicationRecord
   belongs_to :user
-  has_many :reservations, dependent: :destroy
+  has_many :reservations, dependent: :destroy, foreign_key: :doctor_id
 
-  has_one_attached :image
-
-  # Add 'img' attribute
-  attr_accessor :image
+  has_many_attached :images
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :specialization, presence: true, length: { maximum: 255 }

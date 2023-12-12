@@ -14,32 +14,32 @@
 #
 default: &default
   adapter: postgresql
-  encoding: 'LATIN1'
+  encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: doctors_appointment_backend_development
+  database: book_an_appointment_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: doctors_appointment_backend
+  username: postgres
 
   # The password associated with the PostgreSQL role (username).
-  #password:
+  password: cherry
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -55,8 +55,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: doctors_appointment_backend_test
-
+  database: book_an_appointment_test
+  username: postgres
+  password: cherry
+  
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -79,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: doctors_appointment_backend_production
-  username: doctors_appointment_backend
-  password: <%= ENV["DOCTORS_APPOINTMENT_BACKEND_DATABASE_PASSWORD"] %>
+  database: book_an_appointment_production
+  username: book_an_appointment
+  password: <%= ENV["BOOK_AN_APPOINTMENT_DATABASE_PASSWORD"] %>

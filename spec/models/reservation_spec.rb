@@ -8,7 +8,7 @@ RSpec.describe Reservation, type: :model do
   end
 
   let(:reservation) do
-    Reservation.create(user: user, doctor: doctor, date: DateTime.now)
+    Reservation.create(user:, doctor:, date: DateTime.now)
   end
 
   describe 'associations' do
