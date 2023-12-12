@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   # all reservation for admin
-  def getAll
+  def getAll 
     @reservations = Reservation.includes(:user, :doctor).all
     render json: {
       reservations: @reservations.as_json(
