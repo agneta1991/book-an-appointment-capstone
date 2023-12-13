@@ -1,4 +1,6 @@
 class Api::V1::DoctorsController < ApplicationController
+  # load_and_authorize_resource
+  # before_action :authenticate_user!
   before_action :set_doctor, only: %i[show update destroy]
 
   def index
@@ -19,6 +21,7 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def show
+    # render json: @doctor.as_json(except: %i[created_at updated_at])
     @doctor = doctor.find(params[:id])
     @doctor_data = @doctor.as_json
     @doctor_data['image_urls'] = @doctor.images.map? { |image| url_for(image) }
