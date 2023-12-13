@@ -82,13 +82,11 @@ GEM
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -98,6 +96,7 @@ GEM
     devise-jwt (0.11.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.8)
+    diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
     dry-auto_inject (1.0.1)
@@ -112,6 +111,7 @@ GEM
     erubi (1.12.0)
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
+    ffi (1.16.3)
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -219,6 +219,23 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.1.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     rubocop (1.57.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -269,7 +286,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  debug
+  cancancan
   devise
   devise-jwt
   faker
@@ -280,6 +297,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.2)
+  rspec-rails
   rubocop (>= 1.0, < 2.0)
   sprockets-rails
   tzinfo-data

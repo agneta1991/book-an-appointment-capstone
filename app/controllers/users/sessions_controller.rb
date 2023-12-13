@@ -10,17 +10,31 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create
+    # Check if the user parameter is present and has a name key
+    unless params.dig(:user, :name)
+      return render json: { status: 400, message: 'Bad Request: Missing user name' }, status: :bad_request
+    end
+
+    # Find the user by name
     user = User.find_by(name: params[:user][:name])
 
+    # Check if user exists and the password is valid
     if user&.valid_password?(params[:user][:password])
+      # Sign in the user
       sign_in(user)
+
+      # Serialize user data
+      user_data = UserSerializer.new(user).serializable_hash[:data][:attributes]
+
+      # Render the successful login JSON response
       render json: {
         status: 200,
         message: 'Logged in successfully.',
-        token: user.token, # Include the token in the response
-        data: UserSerializer.new(user).serializable_hash[:data][:attributes]
+        token: user.jti, # Include the token in the response
+        data: user_data
       }, status: :ok
     else
+      # Render the error JSON response
       render json: {
         status: 401,
         message: 'Invalid credentials.'

@@ -22,7 +22,6 @@ default: &default
 development:
   <<: *default
   database: book_an_appointment_development
- 
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -59,7 +58,7 @@ test:
   database: book_an_appointment_test
   username: postgres
   password: cherry
-
+  
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -82,7 +81,6 @@ test:
 #
 production:
   <<: *default
-  # url: <%= ENV['DATABASE_URL'] %>
   database: book_an_appointment_production
   username: book_an_appointment
   password: <%= ENV["BOOK_AN_APPOINTMENT_DATABASE_PASSWORD"] %>

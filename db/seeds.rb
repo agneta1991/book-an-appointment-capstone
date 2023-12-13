@@ -53,8 +53,7 @@ doctor1 = Doctor.create!(
   years_of_experience: 7,
   price_per_appointment: 250,
   user_id: admin1.id,
-  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
-)
+  )
 
 doctor2 = Doctor.create!(
   id: 2,
@@ -63,18 +62,16 @@ doctor2 = Doctor.create!(
   years_of_experience: 12,
   price_per_appointment: 200,
   user_id: admin1.id,
-  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
-)
+  )
 
 doctor3 = Doctor.create!(
   id: 3,
   name: 'Gabriel Lloyd',
   specialization: 'Pediatrics',
-  years_of_experience: 14,
+  years_of_experience: 5,
   price_per_appointment: 180,
   user_id: admin1.id,
-  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
-)
+  )
 
 doctor4 = Doctor.create!(
   id: 4,
@@ -83,8 +80,7 @@ doctor4 = Doctor.create!(
   years_of_experience: 4,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
-)
+  )
 
 doctor5 = Doctor.create!(
   id: 5,
@@ -93,59 +89,13 @@ doctor5 = Doctor.create!(
   years_of_experience: 9,
   price_per_appointment: 300,
   user_id: admin1.id,
-  img: 'https://themewagon.github.io/health-center/images/appointment-image.jpg'
 )
 
-reservation1 = Reservation.create!(
-  id: 1,
-  time: '14:20',
-  date: '30/12/2023',
-  user: user1,
-  doctor: doctor1,
-  description: 'Description for Reservation 1'
-)
-
-reservation2 = Reservation.create!(
-  id: 2,
-  time: '15:20',
-  date: '30/12/2023',
-  user: user2,
-  doctor: doctor1,
-  description: 'Description for Reservation 2'
-)
-
-reservation3 = Reservation.create!(
-  id: 3,
-  time: '16:20',
-  date: '30/12/2023',
-  user: user3,
-  doctor: doctor1,
-  description: 'Description for Reservation 3'
-)
-
-reservation4 = Reservation.create!(
-  id: 4,
-  time: '14:20',
-  date: '01/01/2024',
-  user: admin1,
-  doctor: doctor2,
-  description: 'Description for Reservation 4'
-)
-
-reservation5 = Reservation.create!(
-  id: 5,
-  time: '15:20',
-  date: '01/01/2024',
-  user: admin2,
-  doctor: doctor2,
-  description: 'Description for Reservation 5'
-)
-
-reservation6 = Reservation.create!(
-  id: 6,
-  time: '16:20',
-  date: '01/01/2024',
-  user: admin3,
-  doctor: doctor2,
-  description: 'Description for Reservation 6'
-)
+# Seed data for 7 reservations
+Reservation.create(date: '2023-12-15', user: user1, doctor: doctor1, description: 'Checkup for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-16', user: user1, doctor: doctor1, description: 'Follow-up for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-17', user: user1, doctor: doctor1, description: 'Checkup for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-18', user: user1, doctor: doctor1, description: 'Follow-up for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-19', user: user1, doctor: doctor1, description: 'Checkup for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-20', user: user1, doctor: doctor1, description: 'Follow-up for user1 with Dr. Jessica Smith')
+Reservation.create(date: '2023-12-21', user: user1, doctor: doctor1, description: 'Checkup for user1 with Dr. Jessica Smith')
