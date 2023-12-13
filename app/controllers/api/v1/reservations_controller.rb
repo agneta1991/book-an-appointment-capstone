@@ -3,11 +3,25 @@ class Api::V1::ReservationsController < ApplicationController
   load_and_authorize_resource
   before_action :set_reservation, only: %i[show update destroy]
 
+  # my reservation
   def index
     current_user_id = params[:user_id]
     user = User.find(current_user_id)
-    @reservation = user.reservations
-    render json: { reservations: @reservation }
+    @reservations = user.reservations.includes(:doctor)
+    render json: { reservations: @reservations.as_json(include: { doctor: { only: %i[id name] } }) }
+  end
+
+  # all reservation for admin
+  def all
+    @reservations = Reservation.includes(:user, :doctor).all
+    render json: {
+      reservations: @reservations.as_json(
+        include: {
+          user: { only: %i[id name email] },
+          doctor: { only: %i[id name specialization] }
+        }
+      )
+    }
   end
 
   def show
@@ -15,31 +29,47 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    params.dig(:reservation, :doctorName)
+    doctor_id = params.dig(:reservation, :doctorId)
+    user_id = params.dig(:reservation, :userId)
+
+    @reservation = Reservation.new(reservation_params.except(:doctorName, :doctorId, :userId))
+
+    # Set doctor and user associations
+    @reservation.doctor = Doctor.find(doctor_id) # Assuming you have a Doctor model
+    @reservation.user_id = user_id
 
     if @reservation.save
       render json: @reservation, status: :created
     else
-      render json: @reservation.errors, status: :unprocessable_entity
+      render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |_format|
-      if @reservation.update(reservation_params)
-        render json: reservation, status: :updated
+    respond_to do |format|
+      if current_user.admin? || @reservation.user == current_user
+        if @reservation.update(reservation_params)
+          format.json { render json: @reservation, status: :ok }
+        else
+          format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        end
       else
-        render json: reservation.errors, status: :unprocessable_entity
+        format.json { render json: { error: 'Unauthorized' }, status: :unauthorized }
       end
     end
   end
 
   def destroy
-    @reservation.destroy
-
-    respond_to do |_format|
-      render json: reservation, status: :destroyed
-      render json: reservation.errors, status: :unprocessable_entity
+    if current_user.admin? || @reservation.user == current_user
+      @reservation.destroy
+      if @reservation.destroyed?
+        render json: { message: 'Reservation destroyed successfully' }, status: :ok
+      else
+        render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Unauthorized' }, status: :unauthorized
     end
   end
 
@@ -50,6 +80,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :doctor_id, :date, :time)
+    params.require(:reservation).permit(:user_id, :doctor_id, :date, :time, :description, :doctorName, :doctorId,
+                                        :userId)
   end
 end
