@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
   # before_action :authenticate_user!
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_reservation, only: %i[show update destroy]
 
   # my reservation
@@ -29,23 +29,22 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def create
-    params.dig(:reservation, :doctorName)
     doctor_id = params.dig(:reservation, :doctorId)
     user_id = params.dig(:reservation, :userId)
-
+  
     @reservation = Reservation.new(reservation_params.except(:doctorName, :doctorId, :userId))
-
+  
     # Set doctor and user associations
-    @reservation.doctor = Doctor.find(doctor_id) # Assuming you have a Doctor model
+    @reservation.doctor = Doctor.find(doctor_id)
     @reservation.user_id = user_id
-
+  
     if @reservation.save
       render json: @reservation, status: :created
     else
       render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
+  
   def update
     respond_to do |format|
       if current_user.admin? || @reservation.user == current_user
@@ -61,16 +60,12 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    if current_user.admin? || @reservation.user == current_user
       @reservation.destroy
       if @reservation.destroyed?
         render json: { message: 'Reservation destroyed successfully' }, status: :ok
       else
         render json: { errors: @reservation.errors.full_messages }, status: :unprocessable_entity
       end
-    else
-      render json: { error: 'Unauthorized' }, status: :unauthorized
-    end
   end
 
   private
