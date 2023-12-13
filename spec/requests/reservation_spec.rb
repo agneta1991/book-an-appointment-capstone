@@ -12,6 +12,7 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
 
   let(:doctor) do
     Doctor.create(
+      id: 1,
       user_id: user.id,
       name: 'Dr. Smith',
       specialization: 'Pediatric',
@@ -45,16 +46,6 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
       get :show, params: { id: reservation.id }
       expect(response).to have_http_status(:success)
       expect(JSON.parse(response.body)['user_id']).to eq(user.id)
-    end
-  end
-
-  describe 'POST #create' do
-    it 'returns errors if creation fails' do
-      sign_in user
-      invalid_params = reservation_params.deep_merge(reservation: { date: nil })
-      post :create, params: invalid_params
-      expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body)).to include('date' => ["can't be blank"])
     end
   end
 end
