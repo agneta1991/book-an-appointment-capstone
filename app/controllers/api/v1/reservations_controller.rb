@@ -1,6 +1,4 @@
 class Api::V1::ReservationsController < ApplicationController
-  # before_action :authenticate_user!
-  # load_and_authorize_resource
   before_action :set_reservation, only: %i[show update destroy]
 
   # my reservation
@@ -73,6 +71,7 @@ class Api::V1::ReservationsController < ApplicationController
   def set_reservation
     @reservation = Reservation.find(params[:id])
   end
+  
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :doctor_id, :date, :time, :description, :doctorName, :doctorId,

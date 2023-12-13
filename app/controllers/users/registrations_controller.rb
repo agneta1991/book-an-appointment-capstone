@@ -1,5 +1,3 @@
-# app/controllers/users/registrations_controller.rb
-
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :verify_signed_out_user, only: :destroy, unless: -> { request.format.json? }

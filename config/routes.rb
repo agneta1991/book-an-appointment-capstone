@@ -13,8 +13,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :doctors, only: [:index, :show, :new, :create, :update, :destroy]
-      resources :reservations, only: [:index, :show, :create, :update, :destroy]
-
+      
+      # Explicitly define the route for the 'all' action
+      resources :reservations do
+        collection do
+          get 'all', to: 'reservations#all'
+        end
+      end
     end
   end
 end
