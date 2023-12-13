@@ -10,16 +10,16 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
     )
   end
 
- let(:doctor) do
-  Doctor.create(
-    id: 1,
-    user_id: user.id,
-    name: 'Dr. Smith',
-    specialization: 'Pediatric',
-    years_of_experience: 7,
-    price_per_appointment: 150.0
-  )
-end
+  let(:doctor) do
+    Doctor.create(
+      id: 1,
+      user_id: user.id,
+      name: 'Dr. Smith',
+      specialization: 'Pediatric',
+      years_of_experience: 7,
+      price_per_appointment: 150.0
+    )
+  end
 
   let(:reservation_params) do
     {

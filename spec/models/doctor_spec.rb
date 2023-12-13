@@ -10,7 +10,7 @@ RSpec.describe Doctor, type: :model do
       name: 'Dr. Test',
       price_per_appointment: 200.0,
       years_of_experience: 10,
-      user: user
+      user:
     )
     expect(doctor).to_not be_valid
   end
@@ -21,7 +21,7 @@ RSpec.describe Doctor, type: :model do
       specialization: 'a' * 256, # Create a string longer than 255 characters
       price_per_appointment: 180.0,
       years_of_experience: 5,
-      user: user
+      user:
     )
     expect(doctor).to_not be_valid
   end
@@ -32,7 +32,7 @@ RSpec.describe Doctor, type: :model do
       specialization: 'Dentistry',
       price_per_appointment: -100.0,
       years_of_experience: 15,
-      user: user
+      user:
     )
     expect(doctor).to_not be_valid
   end
@@ -43,7 +43,7 @@ RSpec.describe Doctor, type: :model do
       specialization: 'Oncology',
       price_per_appointment: 250.0,
       years_of_experience: -3,
-      user: user
+      user:
     )
     expect(doctor).to_not be_valid
   end
