@@ -46,50 +46,28 @@ user3 = User.create!(
   admin: false
 )
 
-doctor1 = Doctor.create!(
-  id: 1,
-  name: 'Jessica Smith',
-  specialization: 'Dermatology',
-  years_of_experience: 7,
-  price_per_appointment: 250,
-  user_id: admin1.id,
+doctors_data = [
+  { name: 'Jessica Smith', specialization: 'Dermatology', years_of_experience: 7, price_per_appointment: 250, filename: 'doctor1.jpg' },
+  { name: 'Robert Jameson', specialization: 'Family Medicine', years_of_experience: 12, price_per_appointment: 200, filename: 'doctor2.jpg' },
+  { name: 'Gabriel Lloyd', specialization: 'Pediatrics', years_of_experience: 5, price_per_appointment: 180, filename: 'doctor3.jpg' },
+  { name: 'Aurora Bruit', specialization: 'Obstetrics and Gynecology (OB/GYN)', years_of_experience: 4, price_per_appointment: 300, filename: 'doctor4.jpg' },
+  { name: 'Michael D. Valentine', specialization: 'Orthopedics', years_of_experience: 9, price_per_appointment: 300, filename: 'doctor.jpg' }
+]
+
+doctors_data.each do |doctor_data|
+  doctor = Doctor.create!(
+    name: doctor_data[:name],
+    specialization: doctor_data[:specialization],
+    years_of_experience: doctor_data[:years_of_experience],
+    price_per_appointment: doctor_data[:price_per_appointment],
+    user_id: admin1.id
   )
 
-doctor2 = Doctor.create!(
-  id: 2,
-  name: 'Robert Jameson',
-  specialization: 'Family Medicine',
-  years_of_experience: 12,
-  price_per_appointment: 200,
-  user_id: admin1.id,
-  )
+  image_path = Rails.root.join('seedImages', doctor_data[:filename])
+  doctor.images.attach(io: File.open(image_path), filename: doctor_data[:filename])
+end
 
-doctor3 = Doctor.create!(
-  id: 3,
-  name: 'Gabriel Lloyd',
-  specialization: 'Pediatrics',
-  years_of_experience: 5,
-  price_per_appointment: 180,
-  user_id: admin1.id,
-  )
-
-doctor4 = Doctor.create!(
-  id: 4,
-  name: 'Aurora Bruit',
-  specialization: 'Obstetrics and Gynecology (OB/GYN)',
-  years_of_experience: 4,
-  price_per_appointment: 300,
-  user_id: admin1.id,
-  )
-
-doctor5 = Doctor.create!(
-  id: 5,
-  name: 'Michael D. Valentine',
-  specialization: 'Orthopedics',
-  years_of_experience: 9,
-  price_per_appointment: 300,
-  user_id: admin1.id,
-  )
+doctor1 = Doctor.find_by(name: 'Jessica Smith')
 
 # Seed data for 7 reservations
 Reservation.create(date: '2023-12-15', user: user1, doctor: doctor1, description: 'Checkup for user1 with Dr. Jessica Smith')

@@ -59,8 +59,11 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def destroy
-    @doctor.destroy
-    head :no_content
+    if @doctor.destroy
+      head :no_content
+    else
+      render json: { error: 'Unable to destroy doctor' }, status: :unprocessable_entity
+    end
   end
 
   private
