@@ -65,7 +65,6 @@ class Api::V1::DoctorsController < ApplicationController
       render json: { error: 'Unable to destroy doctor' }, status: :unprocessable_entity
     end
   end
-  
 
   private
 
