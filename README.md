@@ -50,6 +50,11 @@ To get a local copy up and running, follow these steps:
 1. Choose a directory
 2. Open a Terminal
 
+
+## Setup
+
+
+
 ### Backend (Ruby on Rails)
 
 3. Run the following command to clone the backend repository:
@@ -60,6 +65,12 @@ To get a local copy up and running, follow these steps:
     ```bash
     cd book-an-appointment-capstone
     ```
+    - Clone this repository to your desired folder:
+
+- Remove config/master.key and config/credentials.yml.enc if they exist.
+- Run in the terminal: EDITOR=code rails credentials:edit 
+- Close the editor that opens.
+- This command will create a new master.key and credentials.yml.enc if they do not exist.
 
 5. Set up the database:
     ```bash
