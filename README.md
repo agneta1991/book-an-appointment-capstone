@@ -22,6 +22,13 @@
 <br>
 Explore the seamless world of healthcare with our clinic management project! Featuring two dedicated repositories for front-end and back-end, our user-friendly platform empowers users to navigate clinic pages, learn about doctors, and book appointments effortlessly. Admin privileges unlock the ability to add doctors seamlessly. Behind the scenes, our robust back-end efficiently manages data operations, including GET, PUT, POST, and DESTROY, ensuring a smooth and secure user experience. Elevate healthcare management with our comprehensive solution.<br>
 
+
+[Link to the Kanban board, which has been set up at the start of the project](https://drive.google.com/file/d/1E4Za4dTw7_4usv3M-kLHWJSJ0IujREcU/view?usp=sharing) <br>
+[Link to the Kanban board, after the project was completed](https://github.com/agneta1991/book-an-appointment-capstone/projects/1)
+<br>
+This project has been completed by 5 team members, you can check out the social media / GitHub profiles in the Author section, or by clicking the link provided below. 
+<p align="left">(<a href="#authors">Authors</a>)</p>
+
 ## 🛠 Built With <a name="built-with"></a>
 <br>
 
