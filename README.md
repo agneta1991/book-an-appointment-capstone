@@ -5,6 +5,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
+- [📊 Tests](#tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -76,6 +77,7 @@ To get a local copy up and running, follow these steps:
     ```bash
     rails db:create
     rails db:migrate
+    rails db:seed
     ```
 
 6. Start the Rails server:
@@ -112,6 +114,16 @@ To get a local copy up and running, follow these steps:
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📊 Tests <a name="tests"></a>
+<br>
+To test the models, validations and controllers please run the following command in your terminal:
+<br>
+    rspec spec
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 
 ## 👥 Authors <a name="authors"></a>
